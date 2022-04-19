@@ -7,7 +7,7 @@ import com.kreitek.files.FileSystemItem;
 public class FileSystemBuilder {
 
     private final FileSystemItem root;
-    private FileSystemItem currentDirectory;
+    private Directory currentDirectory;
 
     public static FileSystemBuilder getBuilder() {
         return new FileSystemBuilder();
@@ -15,11 +15,11 @@ public class FileSystemBuilder {
 
     public FileSystemBuilder() {
         root = new Directory(null, "");
-        currentDirectory = root;
+        currentDirectory = (Directory) root;
     }
 
     public FileSystemBuilder addFile(String name, int size) {
-        FileSystemItem file = new File(currentDirectory, name);
+        File file = new File(currentDirectory, name);
         file.open();
         file.write(new byte[size]);
         file.close();
@@ -28,7 +28,7 @@ public class FileSystemBuilder {
     }
 
     public FileSystemBuilder addDirectory(String name) {
-        FileSystemItem directory = new Directory(currentDirectory, name);
+        Directory directory = new Directory(currentDirectory, name);
         currentDirectory.addFile(directory);
         currentDirectory = directory;
         return this;

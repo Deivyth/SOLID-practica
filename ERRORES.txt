@@ -1,0 +1,23 @@
+Single Responsibility - Este principio tambien se inclumple ya que tenemos una clase Dios que es FileSystemItemBase, la cual hace todas
+las funciones.
+
+Open/Closed - Este principio no se cumple ya que para modificar cualquier clase, tienes que modificar otras clases para que funcione el
+codigo. Haciendo que el codigo no este cerrado.
+
+Liskov substitution - Esto tampoco se cumple dado que en la clases File y Directory tienen mas excepciones que la clase padre FileSystemItemBase.
+
+Interface Segragation - Este principio tambien se inclumple, ya que se estan implementando a las clases Directory y File una interfaz en la cual
+no se utilizan todas sus funcionalidades
+
+Dependency inversion - Este principio tambien se incumple ya que a la hora de modificar tanto las clases como la interfaz, vemos que todos
+dependen unos de otros.
+
+
+Para arreglar esto lo que he echo es en la interfaz FileSystemItem dejar las funciones que comparten Directory y File. Implementar esta interfaz
+a la clase abstracta FileSystemItemBase la cual extenderan Directory y File para que tengan esas funciones en comun.
+
+Despues a las clase Directory le he creado la interfaz DirectorySystem con sus funciones, para luego implementarlo.
+Luego a las clase File le he creado la interfaz FileSystem con sus funciones, para luego implementarlo.
+
+Con esto consigo no tener una clase Dios que haga todas las funciones. Tambien que a la hora de modificar codigo solo afecte a estas clases y no a todas
+como sucedia anteriormente. Ademas ya no lanzamos las excepciones que teniamos en Directory y File, ahora solo tenemos las funciones que estas necesitan.

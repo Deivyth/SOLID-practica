@@ -37,7 +37,7 @@ public class Directory extends FileSystemItemBase implements DirectorySystem{
 
     @Override
     public int getSize() {
-        return size;
+        return this.size;
     }
 
 }

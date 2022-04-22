@@ -1,8 +1,11 @@
 package com.kreitek.utils;
 
 import com.kreitek.entity.Directory;
+import com.kreitek.entity.error.ListEmpty;
 import com.kreitek.files.FileSystemItem;
 import com.kreitek.service.FileManager;
+
+import java.util.List;
 
 public class FileSystemPrinter {
 
@@ -22,7 +25,16 @@ public class FileSystemPrinter {
                 FileSystemPrinter.print(subitem, nivel + 1);
             }
         }
-
     }
 
+    public static void printDirectorySize(FileSystemItem item){
+        try {
+            List<FileSystemItem> files = ((Directory)item).listFiles();
+            String message = String.format("%s = %d bytes",item.getFullPath(), FileManager.calculateSize(files));
+            System.out.println(message);
+        }catch (Exception e){
+            throw new ListEmpty("Lista vacia");
+        }
+
+    }
 }

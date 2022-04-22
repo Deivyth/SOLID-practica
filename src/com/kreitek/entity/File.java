@@ -1,5 +1,7 @@
-package com.kreitek.files;
+package com.kreitek.entity;
 
+import com.kreitek.files.FileSystemItem;
+import com.kreitek.files.FileSystemItemBase;
 import com.kreitek.files.error.InvalidFileFormatException;
 
 public  class File extends FileSystemItemBase implements FileSystem{

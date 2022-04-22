@@ -1,4 +1,7 @@
-package com.kreitek.files;
+package com.kreitek.entity;
+
+import com.kreitek.files.FileSystemItem;
+import com.kreitek.files.FileSystemItemBase;
 
 import java.util.ArrayList;
 import java.util.List;

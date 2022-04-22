@@ -1,4 +1,4 @@
-package com.kreitek.files;
+package com.kreitek.entity;
 
 public interface FileSystem {
     String getExtension();
